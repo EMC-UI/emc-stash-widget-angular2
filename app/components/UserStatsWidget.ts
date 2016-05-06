@@ -8,7 +8,6 @@ import {UserStatsRow} from "./UserStatsRow";
   selector: 'user-stats-widget',
   directives: [UserStatsRow],
   template: `
-  <p>User Stats Widget</p>
   <div>
       <h1>Users with Most Commits {{days}} </h1>
       <user-stats-row></user-stats-row>

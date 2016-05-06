@@ -6,14 +6,45 @@ import {StatsModel} from "./../model/StatsModel";
 
 @Component({
   selector: 'user-stats-row',
+  styles: [`
+      .proj-pic {
+        border-radius: 1em;
+        overflow: hidden;
+        width: 3.5em;
+        height: 3.5em;
+        display: block;
+        background-repeat: no-repeat;
+        background-position: center middle;
+        background-size: cover;
+        float: left;
+      }
+      h3 span {
+        opacity: .6;
+        font-weight: 100;
+      }
+      h3 em {
+        font-style: normal;
+        opacity: 1;
+      }
+      .top {
+        overflow: hidden;
+      }
+      .bar {
+        background: green;
+        height: 3vh;
+        min-height: 18px;
+        display: block;
+        border-radius: 0.5em;
+      }
+  `],
   template: `
-    <div>User Row {{stats.name}} {{stats.count}}</div>
+    <div>{{stats.name}} {{stats.count}}</div>
     <span *ngFor="let project of stats.projects">
       {{project}}
     </span>
     <div class="top">
         <span>
-            <span class="proj-pic" style="background-image:url(assets/img/proj-1.png)"></span>
+            <span class="proj-pic" style="background-image:url(app/assets/img/proj-1.png)"></span>
         </span>
 
         <h3>
