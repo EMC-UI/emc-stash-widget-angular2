@@ -1,7 +1,12 @@
 import {Component} from '@angular/core';
+import {EmcStashWidget} from "./emc-stash-widget.component";
 
 @Component({
-    selector: 'my-app',
-    template: '<h1>My First Angular 2 App</h1>'
+    selector: 'emc-stash-widget-app',
+    directives: [EmcStashWidget],
+    template: `
+      <h1>Emc Stash Widget App</h1>
+      <emc-stash-widget></emc-stash-widget>
+    `
 })
-export class AppComponent { }
+export class EmcStashWidgetApp { }
