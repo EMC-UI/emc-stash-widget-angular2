@@ -2,10 +2,10 @@
  * Created by cromed on 5/5/16.
  */
 import {Injectable} from "@angular/core";
-import {iRestResponseModel} from "./iRestResponseModel";
+import {iRestResponseModel} from "./../model/iRestResponseModel";
 
 @Injectable()
-export class StashService {
+export class StatsService {
   public title: string = "Sample service";
 
   constructor() {

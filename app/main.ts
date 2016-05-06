@@ -1,4 +1,4 @@
 import {bootstrap}    from '@angular/platform-browser-dynamic';
-import {EmcStashWidgetApp} from './app.component';
+import {EmcStashApp} from './components/EmcStashApp';
 
-bootstrap(EmcStashWidgetApp);
+bootstrap(EmcStashApp);

@@ -2,10 +2,10 @@
  * Created by cromed on 5/5/16.
  */
 import {Component} from '@angular/core';
-import {StatsModel} from "./stats.model";
+import {StatsModel} from "./../model/StatsModel";
 
 @Component({
-  selector: 'user-row',
+  selector: 'user-stats-row',
   template: `
     <div>User Row {{stats.name}} {{stats.count}}</div>
     <span *ngFor="let project of stats.projects">
@@ -33,7 +33,7 @@ import {StatsModel} from "./stats.model";
     </div>
   `
 })
-export class UserRow {
+export class UserStatsRow {
   stats:StatsModel;
   constructor() {
     this.stats = new StatsModel();

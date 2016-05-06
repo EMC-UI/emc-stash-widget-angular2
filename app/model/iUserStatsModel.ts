@@ -17,7 +17,7 @@ import {iProjectModel} from "./iProjectModel";
  */
 
 
-export interface iStashModel {
+export interface iUserStatsModel {
   _id: string;
   projects: iProjectModel[];
   count: number;
