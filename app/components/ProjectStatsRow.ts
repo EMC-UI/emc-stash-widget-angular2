@@ -1,12 +1,15 @@
 /**
+ * Created by cromed on 5/6/16.
+ */
+/**
  * Created by cromed on 5/5/16.
  */
 import {Component} from '@angular/core';
-import {UserStatsModel} from "./../model/UserStatsModel";
+import {ProjectStatsModel} from "./../model/ProjectStatsModel";
 
 @Component({
-  selector: 'user-stats-row',
-  inputs:['stats'],
+  selector: 'project-stats-row',
+  inputs: ['stats'],
   styles: [`
       .proj-pic {
         border-radius: 1em;
@@ -40,25 +43,26 @@ import {UserStatsModel} from "./../model/UserStatsModel";
   `],
   template: `
     <div class="top">
-        <span>
-            <span class="proj-pic" style="background-image:url(app/assets/img/proj-1.png)"></span>
+        <span ng-if="$index<5">
+            <span class="proj-pic" style="background-image:url(app/assets/img/proj-{{$index}}.png)"></span>
         </span>
+
         <h3>
-            <em>{{stats._id}}</em> <span>has</span>
-            <em>{{stats.count}}</em> <span>commits with</span>
-            <em>{{stats.projects.length}}</em>
+            <em>{{item._id}}</em> <span>has</span>
+            <em>{{item.count}}</em> <span>commits with</span>
+            <em>{{item.projects.length}}</em>
             <span>projects [
-                <span *ngFor="let proj of stats.projects">
-                    {{ proj }}
+                <span ng-repeat="proj of item.projects">
+                    {{ proj.project }}
                 </span> ]
             </span>
         </h3>
         <div class="container">
-            <div class="bar" style="width: {{stats.commitPercent}}%"></div>
+            <div class="bar" style="width: {{item.commitPercent}}%"></div>
         </div>
     </div>
   `
 })
-export class UserStatsRow {
-  stats:UserStatsModel;
+export class ProjectStatsRow {
+  stats:ProjectStatsModel;
 }

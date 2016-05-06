@@ -3,6 +3,7 @@
  */
 import {Component} from '@angular/core';
 import {UserStatsRow} from "./UserStatsRow";
+import {UserStatsModel} from "../model/UserStatsModel";
 
 @Component({
   selector: 'user-stats-widget',
@@ -10,13 +11,46 @@ import {UserStatsRow} from "./UserStatsRow";
   template: `
   <div>
       <h1>Users with Most Commits {{days}} </h1>
-      <user-stats-row></user-stats-row>
+      <div *ngFor="let item of userStats" class="entry">
+        <user-stats-row [stats]="item"></user-stats-row>
+      </div>
   </div>
   `
 })
 export class UserStatsWidget {
-  days: number;
+  public userStats:UserStatsModel[];
   constructor() {
-    this.days = 7
+    this.userStats = [
+        {
+          "_id": "Kris Thompson",
+          "projects": [
+            {
+              "project": "SKUI",
+              "count": 13
+            }
+          ],
+          "count": 13
+        },
+        {
+          "_id": "parkec10",
+          "projects": [
+            {
+              "project": "SKUI",
+              "count": 12
+            }
+          ],
+          "count": 12
+        },
+        {
+          "_id": "smithj66",
+          "projects": [
+            {
+              "project": "CUC",
+              "count": 10
+            }
+          ],
+          "count": 10
+        }
+    ];
   }
 }

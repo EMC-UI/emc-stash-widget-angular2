@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {UserStatsWidget} from "./UserStatsWidget";
-import {ViewModel} from "../model/ViewModel";
+import {ProjectStatsWidget} from "./ProjectStatsWidget";
 
 @Component({
     selector: 'emc-stash-app',
@@ -9,7 +9,33 @@ import {ViewModel} from "../model/ViewModel";
       style: 'display:flex'
     },
     styles: [
+      `
+      label {
+        display:block;
+      }
+      #left {
+        width: 5em;
+        flex-shrink: 1;
+      }
 
+      #right {
+        flex-grow: 1;
+      }
+
+      .circle {
+        width: 4em;
+        height: 4em;
+        display: block;
+        border-radius: 50%;
+        margin: 2em 0;
+        background: #d8d8d8;
+        text-align:center;
+        vertical-align:-20px;
+      }
+      .circle.active {
+        background: #2C95DD;
+      }
+      `
     ],
     template: `
       <div id="left">
@@ -29,11 +55,12 @@ import {ViewModel} from "../model/ViewModel";
         </select-->
 
         <span *ngFor="let item of views" class="circle" [class.active]="item === view" (click)="setView(item)">
-          <span style="vertical-align:-2.5em;"><b>{{ item.name }}</b></span>
+          <span style="vertical-align:-2.5em;"><b>{{ item }}</b></span>
         </span>
       </div>
       <div id="right">
           <user-stats-widget></user-stats-widget>
+          <project-stats-widget></project-stats-widget>
       </div>
 
     `
@@ -41,22 +68,17 @@ import {ViewModel} from "../model/ViewModel";
 export class EmcStashApp {
 
   //could use const here? //
-  public view:ViewModel;
-  public views:ViewModel[];
-  public widgetModes:string[];
+  public view:string;
+  public views:string[] = ['User','Project','Repo'];
+  public widgetModes:string[] = ['manual','auto'];
   public widgetMode:string;
 
   constructor() {
-    this.views = [];
-    this.views.push(new ViewModel(0, 'User'));
-    this.views.push(new ViewModel(1, 'Project'));
-    this.views.push(new ViewModel(2, 'Repo'));
     this.view = this.views[0];
-    this.widgetModes = ['click','presentation'];
     this.widgetMode = this.widgetModes[0];
   }
 
-  setView(view:ViewModel) {
+  setView(view:string) {
     this.view = view;
   }
 
