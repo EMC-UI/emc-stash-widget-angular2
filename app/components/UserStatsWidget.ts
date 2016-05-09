@@ -1,9 +1,11 @@
 /**
  * Created by cromed on 5/5/16.
  */
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {UserStatsRow} from "./UserStatsRow";
 import {UserStatsModel} from "../model/UserStatsModel";
+import {StatsService} from "../service/StatsService";
+import {Response} from '@angular/http';
 
 @Component({
   selector: 'user-stats-widget',
@@ -19,38 +21,10 @@ import {UserStatsModel} from "../model/UserStatsModel";
 })
 export class UserStatsWidget {
   public userStats:UserStatsModel[];
-  constructor() {
-    this.userStats = [
-        {
-          "_id": "Kris Thompson",
-          "projects": [
-            {
-              "project": "SKUI",
-              "count": 13
-            }
-          ],
-          "count": 13
-        },
-        {
-          "_id": "parkec10",
-          "projects": [
-            {
-              "project": "SKUI",
-              "count": 12
-            }
-          ],
-          "count": 12
-        },
-        {
-          "_id": "smithj66",
-          "projects": [
-            {
-              "project": "CUC",
-              "count": 10
-            }
-          ],
-          "count": 10
-        }
-    ];
+  constructor(@Inject(StatsService) service:StatsService) {
+    service.getUserStats().subscribe((res: Response) => {
+      var response = res.json();
+      this.userStats = response.stats;
+    });
   }
 }

@@ -4,7 +4,7 @@ import {ProjectStatsWidget} from "./ProjectStatsWidget";
 
 @Component({
     selector: 'emc-stash-app',
-    directives: [UserStatsWidget],
+    directives: [UserStatsWidget, ProjectStatsWidget],
     host: {
       style: 'display:flex'
     },
@@ -44,8 +44,7 @@ import {ProjectStatsWidget} from "./ProjectStatsWidget";
             name="widgetMode"
             type="radio"
             ng-value="mode"
-            ng-model="widgetMode" />
-            {{mode}}
+            ng-model="widgetMode" />{{mode}}
         </label>
 
         <!--select name="prevDays" required

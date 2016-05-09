@@ -48,8 +48,8 @@ import {UserStatsModel} from "./../model/UserStatsModel";
             <em>{{stats.count}}</em> <span>commits with</span>
             <em>{{stats.projects.length}}</em>
             <span>projects [
-                <span *ngFor="let proj of stats.projects">
-                    {{ proj }}
+                <span *ngFor="let proj of stats.projects; let last = last">
+                    {{ proj.project }}{{!last ? ', ' : '' }}
                 </span> ]
             </span>
         </h3>

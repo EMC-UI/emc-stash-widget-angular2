@@ -1,12 +1,10 @@
 /**
  * Created by cromed on 5/6/16.
  */
-/**
- * Created by cromed on 5/5/16.
- */
 import {Component} from '@angular/core';
 import {ProjectStatsRow} from "./ProjectStatsRow";
 import {ProjectStatsModel} from "../model/ProjectStatsModel";
+import {StatsService} from "../service/StatsService";
 
 @Component({
   selector: 'project-stats-widget',
@@ -19,9 +17,9 @@ import {ProjectStatsModel} from "../model/ProjectStatsModel";
   `
 })
 export class ProjectStatsWidget {
-  stats:ProjectStatsModel[];
+  projectStats:ProjectStatsModel[];
   constructor() {
-    this.stats = [
+    this.projectStats = [
       {
         "_id": "SKUI",
         "users": [
