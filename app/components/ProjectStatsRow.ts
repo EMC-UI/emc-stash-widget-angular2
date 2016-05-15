@@ -4,7 +4,7 @@
 /**
  * Created by cromed on 5/5/16.
  */
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {ProjectStatsModel} from "./../model/ProjectStatsModel";
 
 @Component({
@@ -34,16 +34,17 @@ import {ProjectStatsModel} from "./../model/ProjectStatsModel";
         overflow: hidden;
       }
       .bar {
-        background: green;
+        background: red;
         height: 3vh;
         min-height: 18px;
         display: block;
         border-radius: 0.5em;
       }
   `],
+  encapsulation: ViewEncapsulation.Native,
   template: `
     <div class="top">
-        <span ng-if="$index<5">
+        <span>
             <span class="proj-pic" style="background-image:url(app/assets/img/proj-1.png)"></span>
         </span>
 

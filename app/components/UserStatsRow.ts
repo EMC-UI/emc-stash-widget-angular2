@@ -1,7 +1,7 @@
 /**
  * Created by cromed on 5/5/16.
  */
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {UserStatsModel} from "./../model/UserStatsModel";
 
 @Component({
@@ -38,6 +38,7 @@ import {UserStatsModel} from "./../model/UserStatsModel";
         border-radius: 0.5em;
       }
   `],
+  encapsulation: ViewEncapsulation.Native,
   template: `
     <div class="top">
         <span>

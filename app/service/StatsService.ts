@@ -15,5 +15,10 @@ export class StatsService {
   getUserStats(): any {
     return this.http.request('app/service/userStats.json');
   }
-  
+
+  getProjectStats(): any {
+    return this.http.request('app/service/projectStats.json');
+  }
+
+
 }

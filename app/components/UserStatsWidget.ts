@@ -23,8 +23,7 @@ export class UserStatsWidget {
   public userStats:UserStatsModel[];
   constructor(@Inject(StatsService) service:StatsService) {
     service.getUserStats().subscribe((res: Response) => {
-      var response = res.json();
-      this.userStats = response.stats;
+      this.userStats = res.json().stats;
     });
   }
 }

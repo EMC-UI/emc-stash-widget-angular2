@@ -1,10 +1,11 @@
 /**
  * Created by cromed on 5/6/16.
  */
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {ProjectStatsRow} from "./ProjectStatsRow";
 import {ProjectStatsModel} from "../model/ProjectStatsModel";
 import {StatsService} from "../service/StatsService";
+import {Response} from '@angular/http';
 
 @Component({
   selector: 'project-stats-widget',
@@ -18,72 +19,9 @@ import {StatsService} from "../service/StatsService";
 })
 export class ProjectStatsWidget {
   projectStats:ProjectStatsModel[];
-  constructor() {
-    this.projectStats = [
-      {
-        "_id": "SKUI",
-        "users": [
-          {
-            "user": "parkec10",
-            "count": 12
-          },
-          {
-            "user": "ducho",
-            "count": 6
-          },
-          {
-            "user": "sjolat2",
-            "count": 5
-          },
-          {
-            "user": "Kris Thompson",
-            "count": 5
-          },
-          {
-            "user": "brian.reynolds",
-            "count": 5
-          },
-          {
-            "user": "tliu",
-            "count": 3
-          },
-          {
-            "user": "klaird",
-            "count": 3
-          },
-          {
-            "user": "pylem",
-            "count": 2
-          },
-          {
-            "user": "anands6",
-            "count": 1
-          },
-          {
-            "user": "Kim",
-            "count": 1
-          },
-          {
-            "user": "harnid",
-            "count": 1
-          }
-        ],
-        "count": 44
-      },
-      {
-        "_id": "CUC",
-        "users": [
-          {
-            "user": "smithj66",
-            "count": 10
-          },
-          {
-            "user": "dehru",
-            "count": 5
-          }
-        ],
-        "count": 15
-      }
-    ]
+  constructor(@Inject(StatsService) service:StatsService) {
+    service.getProjectStats().subscribe((res: Response) => {
+      this.projectStats = res.json().stats;
+    })
   }
 }
